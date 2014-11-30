@@ -37,24 +37,28 @@ let g:lightline = {'colorscheme': 'Tomorrow_Night'}
 syntax enable
 
 set hidden
-set number      
+set number 
+
+"python
 set tabstop=4   
 set shiftwidth=4
 set expandtab
 set softtabstop=4
 set autoindent
 set copyindent
-set cursorline
+
+"search
 set showmatch
 set hlsearch
 set incsearch
-set laststatus=2
 set ignorecase
 set smartcase
+
+set laststatus=2 "for lightline
+set cursorline
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 set nowrap
-set swapfile
-set dir=~/tmp
+set nobackup "swap files stahp
 
 map <C-n> :NERDTreeToggle<CR>
 
