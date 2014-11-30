@@ -12,6 +12,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -26,6 +28,9 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
+"
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
 " Put your non-Plugin stuff after this line
 
 let g:lightline = {'colorscheme': 'Tomorrow_Night'}
@@ -48,6 +53,7 @@ set laststatus=2
 set ignorecase
 set smartcase
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
+set nowrap
 
 map <C-n> :NERDTreeToggle<CR>
 
