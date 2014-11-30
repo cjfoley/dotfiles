@@ -11,7 +11,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 
@@ -54,6 +53,8 @@ set ignorecase
 set smartcase
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 set nowrap
+set swapfile
+set dir=~/tmp
 
 map <C-n> :NERDTreeToggle<CR>
 
