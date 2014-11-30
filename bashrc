@@ -1,4 +1,3 @@
-#suitable everywhere
 alias ls='ls -GFh'
 alias grep='grep --color=auto'
 
@@ -22,7 +21,6 @@ function gibberish () {
     base64 /dev/urandom | head -c $@
 }
 
-#OS X only
 alias flushdns='sudo killall -HUP mDNSResponder'
 
 export PATH=/opt/local/bin:/opt/local/sbin:/Users/cj/Documents/workspace/starfish-helper-scripts/:$PATH

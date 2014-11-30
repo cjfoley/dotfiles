@@ -86,19 +86,6 @@ alias grep='grep --color=auto'
 export PAGER=less
 export LESS="-iMSx4 -FX"
 
-#COLOR_TYPES=(00 01)
-#COLOR_CODES=(31 32 33 34 35 36)
-
-#U1=${COLOR_TYPES[$RANDOM % ${#COLOR_TYPES[@]} ]}
-#U2=${COLOR_CODES[$RANDOM % ${#COLOR_CODES[@]} ]}
-#H1=${COLOR_TYPES[$RANDOM % ${#COLOR_TYPES[@]} ]}
-#H2=${COLOR_CODES[$RANDOM % ${#COLOR_CODES[@]} ]}
-#W1=${COLOR_TYPES[$RANDOM % ${#COLOR_TYPES[@]} ]}
-#W2=${COLOR_CODES[$RANDOM % ${#COLOR_CODES[@]} ]}
-
-#export PS1="\[\e[00;37m\][\[\e[0m\]\[\e[${U1};${U2}m\]\u\[\e[0m\]\[\e[00;37m\]@\[\e[0m\]\[\e[${H1};${H2}m\]\h\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[${W1};${W2}m\]\W\[\e[0m\]\[\e[00;37m\]]\\$ \[\e[0m\]"
-#if [ -n "$STY" ]; then export PS1="\[\e[00;31m\](screen) \[\e[0m\]$PS1"; fi
-
 function gibberish () {
     base64 /dev/urandom | head -c $@
 }
