@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Library/Frameworks/Python.framework/Versions/2.4/lib/python2.4'
+let g:netrw_dirhist_2='/Users/cj/Downloads'
+let g:netrw_dirhist_3='/Users/cj/Documents/workspace/starfish/def/scripts/patches'
+let g:netrw_dirhist_4='/Users/cj/Documents/workspace/starfish-helper-scripts'
