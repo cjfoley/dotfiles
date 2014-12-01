@@ -13,6 +13,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
+Plugin 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,7 +59,10 @@ set laststatus=2 "for lightline
 set cursorline
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 set nowrap
-set nobackup "swap files stahp
+    
+"vim stahp
+set nobackup 
+set noswapfile
 
 map <C-n> :NERDTreeToggle<CR>
 
