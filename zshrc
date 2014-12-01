@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/opt/local/bin:/opt/local/sbin:/Users/cj/Documents/workspace/starfish-helper-scripts/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/apache-maven-3.1.1/bin:/Library/PostgreSQL/9.2/bin/:/opt/X11/bin"
+export PATH="/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
