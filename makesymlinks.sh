@@ -57,3 +57,7 @@ fi
 }
 
 install_zsh
+
+#TODO: dependencies for vim plugins and things...
+#* the colorized cat alias needs Pygments: pip install Pygments
+#* tagbar needs exuberant ctags: brew install ctags-excuberant
