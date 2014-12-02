@@ -10,10 +10,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'majutsushi/tagbar'
+Plugin 'Shougo/unite.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,16 +62,3 @@ set nowrap
 "vim stahp
 set nobackup 
 set noswapfile
-
-map <C-n> :NERDTreeToggle<CR>
-
-
-
-
-
-
-
-
-
-
-
