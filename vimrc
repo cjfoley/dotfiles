@@ -26,8 +26,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 "
-" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-"
 " Put your non-Plugin stuff after this line
 
 let g:lightline = {'colorscheme': 'Tomorrow_Night'}
