@@ -20,7 +20,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-set laststatus=2 "for lightline
+"set laststatus=2 "for lightline
 set cursorline
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 set nowrap
