@@ -23,7 +23,7 @@ function prompt_command () {
     PS1="\n\\[\e[00;37m\]\w\[\e[0m\]\n"
 
     #add a star if inside screen
-    [ -n "$STY" ] && PS1+="\[\e[${S1};${S2}m\]★ \[\e[0m\]"
+    [ -n "$STY" ] && PS1+="\[\e[${S1};${S2}m\]★  \[\e[0m\]"
 
     #common prompt
     PS1+="\[\e[${U1};${U2}m\]\u\[\e[0m\]\[\e[00;37m\]@\[\e[0m\]\[\e[${H1};${H2}m\]\h\[\e[0m\]"
@@ -48,7 +48,7 @@ export HISTSIZE=4096
 export EDITOR='/usr/bin/vim'
 export AUTOSSH_POLL=30
 
-export PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:${HOME}/bin:${PATH}"
+export PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin"
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/1.6.0_37-b06-434.jdk/Contents/Home
 export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 export CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=1024m"
