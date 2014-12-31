@@ -45,18 +45,22 @@ export HISTCONTROL=ignoredups
 export HISTCONTROL=ignoreboth
 export HISTIGNORE='pwd:ls:history:'
 export HISTSIZE=4096
-export EDITOR='/usr/bin/vim'
+export EDITOR='vim'
+export VISUAL='vim'
 export AUTOSSH_POLL=30
 
-export PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin"
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/1.6.0_37-b06-434.jdk/Contents/Home
+export EC2_HOME="/usr/local/ec2/ec2-api-tools-1.7.2.4"  
 export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 export CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=1024m"
 export PAGER=less
 export LESS="-iMSx4 -FX"
 export PROMPT_COMMAND=prompt_command
 
+[ "$(hostname)" == "host56.starfishsolutions.com" ] && export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home" 
+
+export PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin:${EC2_HOME}/bin"
+
 alias ls='ls -GFh'
 alias grep='grep --color=auto'
 alias flushdns='sudo killall -HUP mDNSResponder'
-
+alias worklog='vim -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt | tail -2 | head -1)'
