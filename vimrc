@@ -1,9 +1,7 @@
 set nocompatible
 filetype plugin indent on
-let g:lightline = {'colorscheme': 'Tomorrow_Night'}
 syntax enable
 set hidden
-set number 
 
 "python
 set tabstop=4   
@@ -20,7 +18,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-"set laststatus=2 "for lightline
+set number
 set cursorline
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 set nowrap
