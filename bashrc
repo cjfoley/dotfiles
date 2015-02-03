@@ -13,18 +13,16 @@ function gibberish () {
 }
 
 function pretty () {
-    local OUT=''
-    local COLORNUM=31
-    local COLOR="\\e[0;${COLORNUM}m"
     local RESET='\e[0m'
 
     while read -r LINE; do
-        COLORNUM=31
+        local OUT=''
+        local COLORNUM=31
 
         for COLUMN in ${LINE}; do
+            local COLOR="\\e[0;${COLORNUM}m"
             COLORNUM=$((COLORNUM + 1))
-            COLOR="\\e[0;${COLORNUM}m"
-            OUT="${OUT}${COLOR}${COLUMN}${RESET} "
+            OUT="${OUT}${COLOR}${COLUMN}${RESET}\t"
         done
 
         echo -e "${OUT}"
