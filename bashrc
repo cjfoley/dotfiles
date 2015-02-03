@@ -12,6 +12,25 @@ function gibberish () {
     base64 /dev/urandom | head -c $@
 }
 
+function pretty () {
+    local OUT=''
+    local COLORNUM=31
+    local COLOR="\\e[0;${COLORNUM}m"
+    local RESET='\e[0m'
+
+    while read -r LINE; do
+        COLORNUM=31
+
+        for COLUMN in ${LINE}; do
+            COLORNUM=$((COLORNUM + 1))
+            COLOR="\\e[0;${COLORNUM}m"
+            OUT="${OUT}${COLOR}${COLUMN}${RESET} "
+        done
+
+        echo -e "${OUT}"
+    done <<< "$(cat -)" 
+}
+
 function renametab () {
     echo -ne "\033]0;"$@"\007"
 }
@@ -63,4 +82,5 @@ export PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:
 alias ls='ls -GFh'
 alias grep='grep --color=auto'
 alias flushdns='sudo killall -HUP mDNSResponder'
-alias worklog='vim -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt | tail -2 | head -1)'
+alias worklog='vim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
+alias worklog_search='find $HOME/Dropbox/Work/worklog -type f -name *.txt | percol'
