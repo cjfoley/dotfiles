@@ -1,0 +1,40 @@
+# ~/.tmuxinator/stage.yml
+
+name: stage
+root: ~/
+
+windows:
+  - tomcat:
+      layout: main-vertical
+      panes:
+        - shell:
+            - ssh cfoley@stage.starfishsolutions.com
+        - catalina:
+            - ssh cfoley@stage.starfishsolutions.com
+            - sudo less -S +F /var/log/starfish/tomcat/catalina.out
+        - htop:
+            - ssh cfoley@stage.starfishsolutions.com
+            - top -p $(pgrep -d ',' "jsvc")
+  - batch:
+      layout: main-vertical
+      panes:
+        - shell:
+            - ssh cfoley@stage.starfishsolutions.com
+        - log:
+            - ssh cfoley@stage.starfishsolutions.com
+            - less -S +F /var/log/starfish/starfish-batch-stage/starfish-batch.log
+        - htop:
+            - ssh cfoley@stage.starfishsolutions.com
+            - top -p $(ps aux | grep "starfish-batch.jar" | grep -v grep | awk '{ print $2 }')
+  - importer:
+      layout: main-vertical
+      panes:
+        - shell:
+            - ssh cfoley@stage.starfishsolutions.com
+        - log:
+            - ssh cfoley@stage.starfishsolutions.com
+            - less -S +F /var/log/starfish/data-importer-stage/data-importer.log
+        - htop:
+            - ssh cfoley@stage.starfishsolutions.com
+            - top -p $(ps aux | grep "data-importer.jar" | grep -v grep | awk '{ print $2 }')
+    
