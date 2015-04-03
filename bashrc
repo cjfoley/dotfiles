@@ -72,6 +72,7 @@ export CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=1024m
 export PAGER=less
 export LESS="-iMSx4 -FX"
 export PROMPT_COMMAND=prompt_command
+export DISABLE_AUTO_TITLE=true
 
 [ "$(hostname)" == "host56.starfishsolutions.com" ] && export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home" 
 
@@ -82,3 +83,6 @@ alias grep='grep --color=auto'
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias worklog='vim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
 alias worklog_search='find $HOME/Dropbox/Work/worklog -type f -name *.txt | percol'
+alias mux='tmuxinator'
+
+[ -r ~/bin/tmuxinator.bash ] && source ~/bin/tmuxinator.bash
