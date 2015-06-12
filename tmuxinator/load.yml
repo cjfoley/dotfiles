@@ -1,0 +1,36 @@
+# ~/.tmuxinator/load.yml
+
+name: load
+root: ~/
+
+windows:
+  - SJC:
+      layout: tiled
+      panes:
+        - web3:
+            - ssh cfoley@web3.sjc.starfishsolutions.com
+            - htop
+        - web4:
+            - ssh cfoley@web4.sjc.starfishsolutions.com
+            - htop
+        - web5:
+            - ssh cfoley@web5.sjc.starfishsolutions.com
+            - htop
+        - web6:
+            - ssh cfoley@web6.sjc.starfishsolutions.com
+            - htop
+  - ASH:
+      layout: tiled
+      panes:
+        - web1:
+            - ssh cfoley@web1.ash.starfishsolutions.com
+            - htop
+        - web2:
+            - ssh cfoley@web2.ash.starfishsolutions.com
+            - htop
+        - web3:
+            - ssh cfoley@web3.ash.starfishsolutions.com
+            - htop
+        - web4:
+            - ssh cfoley@web4.ash.starfishsolutions.com
+            - htop
