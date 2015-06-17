@@ -26,3 +26,6 @@ set nowrap
 "vim stahp
 set nobackup 
 set noswapfile
+
+"ctrl-p
+set runtimepath^=~/.vim/bundle/ctrlp.vim
