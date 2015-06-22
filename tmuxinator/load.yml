@@ -9,28 +9,28 @@ windows:
       panes:
         - web3:
             - ssh cfoley@web3.sjc.starfishsolutions.com
-            - htop
+            - dstat
         - web4:
             - ssh cfoley@web4.sjc.starfishsolutions.com
-            - htop
+            - dstat
         - web5:
             - ssh cfoley@web5.sjc.starfishsolutions.com
-            - htop
+            - dstat
         - web6:
             - ssh cfoley@web6.sjc.starfishsolutions.com
-            - htop
+            - dstat
   - ASH:
       layout: tiled
       panes:
         - web1:
             - ssh cfoley@web1.ash.starfishsolutions.com
-            - htop
+            - dstat
         - web2:
             - ssh cfoley@web2.ash.starfishsolutions.com
-            - htop
+            - dstat
         - web3:
             - ssh cfoley@web3.ash.starfishsolutions.com
-            - htop
+            - dstat
         - web4:
             - ssh cfoley@web4.ash.starfishsolutions.com
-            - htop
+            - dstat
