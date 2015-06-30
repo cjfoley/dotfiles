@@ -31,34 +31,106 @@ windows:
   - 'starfish misc': 
     - cd ~/Workspace/misc 
     - vim ~/Workspace/misc
-  - 'stage      [batch, importer]': ssh cfoley@stage.starfishsolutions.com
-  - 'stage-rc   [batch, importer]': ssh cfoley@stage-rc.starfishsolutions.com
-  - 'stage-ea   [batch]': ssh cfoley@stage-ea.starfishsolutions.com
-  - 'stage-ops  [batch]': ssh cfoley@stage-ops.starfishsolutions.com
-  - 'web1s.ash  [staging]': ssh cfoley@web1s.ash.starfishsolutions.com
-  - 'web2s.ash  [staging]': ssh cfoley@web2s.ash.starfishsolutions.com
-  - 'web3.sjc   [data-importer-ops, starfish-batch-ops1, starfish-batch-ops2]': ssh cfoley@web3.sjc.starfishsolutions.com
-  - 'web4.sjc   [data-importer-beta, starfish-batch-ea2, starfish-batch-ea3]': ssh cfoley@web4.sjc.starfishsolutions.com
-  - 'web5.sjc   [starfish-batch-ops3, starfish-batch-ops4, starfish-batch-ops5]': ssh cfoley@web5.sjc.starfishsolutions.com
-  - 'web6.sjc   [starfish-batch-ea1, starfish-batch-ea4]': ssh cfoley@web6.sjc.starfishsolutions.com
-  - 'web1.ash   [data-importer-ops, starfish-batch-ops-ash1]': ssh cfoley@web1.ash.starfishsolutions.com 
-  - 'web2.ash   [data-importer-beta, starfish-batch-ea-ash1, starfish-batch-ea-ash2]': ssh cfoley@web2.ash.starfishsolutions.com
-  - 'web3.ash   [starfish-batch-ops-ash2, starfish-batch-ops-ash3, starfish-batch-ops-ash4]': ssh cfoley@web3.ash.starfishsolutions.com
-  - 'web4.ash   []': ssh cfoley@web4.ash.starfishsolutions.com 
-  - 'web1.irl   [batch ea1 irl, data-importer beta]': ssh cfoley@web1.irl.internal.studentsuccessinc.com
-  - 'web2.irl   [batch ops1 irl, data-importer ops]': ssh cfoley@web2.irl.internal.studentsuccessinc.com
-  - 'db4.sjc    [sfadmin_ops, ops]': ssh cfoley@db4.sjc.starfishsolutions.com
-  - 'db5.sjc    [sfadmin_beta, ea]': ssh cfoley@db5.sjc.starfishsolutions.com
-  - 'db6.sjc    [ops2]': ssh cfoley@db6.sjc.starfishsolutions.com
-  - 'db7.sjc    [ea2]': ssh cfoley@db7.sjc.starfishsolutions.com
-  - 'db8.sjc    [ops3]': ssh cfoley@db8.sjc.starfishsolutions.com
-  - 'db9.sjc    [ea3]': ssh cfoley@db9.sjc.starfishsolutions.com
-  - 'db10.sjc   [ops4]': ssh cfoley@db10.sjc.starfishsolutions.com
-  - 'db11.sjc   [ea4, ops5]': ssh cfoley@db11.sjc.starfishsolutions.com
-  - 'db2.ash    [sfadmin_ops_ash, ops_ash, ivytech]': ssh cfoley@db2.ash.starfishsolutions.com
-  - 'db3.ash    [testing]': ssh cfoley@db3.ash.starfishsolutions.com
-  - 'db4.ash    [ops2_ash, vccs]': ssh cfoley@db4.ash.starfishsolutions.com
-  - 'db5.ash    [sfadmin_ea_ash, ea_ash]': ssh cfoley@db5.ash.starfishsolutions.com
-  - 'db6.ash    [ops3_ash]': ssh cfoley@db6.ash.starfishsolutions.com
-  - 'db7.ash    [ea2_ash]': ssh cfoley@db7.ash.starfishsolutions.com
-  - 'db8.ash    [ops4_ash]': ssh cfoley@db8.ash.starfishsolutions.com
+  - 'stage': 
+    - ssh cfoley@stage.starfishsolutions.com
+    - exit
+  - 'stage-rc': 
+    - ssh cfoley@stage-rc.starfishsolutions.com
+    - exit
+  - 'stage-ea': 
+    - ssh cfoley@stage-ea.starfishsolutions.com
+    - exit
+  - 'stage-ops': 
+    - ssh cfoley@stage-ops.starfishsolutions.com
+    - exit
+  - 'web1s.ash': 
+    - ssh cfoley@web1s.ash.starfishsolutions.com
+    - exit
+  - 'web2s.ash': 
+    - ssh cfoley@web2s.ash.starfishsolutions.com
+    - exit
+  - 'web3.sjc   [importer-ops, batch-ops1, batch-ops2]': 
+    - ssh cfoley@web3.sjc.starfishsolutions.com
+    - exit
+  - 'web4.sjc   [importer-beta, batch-ea2, batch-ea3]': 
+    - ssh cfoley@web4.sjc.starfishsolutions.com
+    - exit
+  - 'web5.sjc   [batch-ops3, batch-ops4, batch-ops5]': 
+    - ssh cfoley@web5.sjc.starfishsolutions.com
+    - exit
+  - 'web6.sjc   [batch-ea1, batch-ea4]': 
+    - ssh cfoley@web6.sjc.starfishsolutions.com
+    - exit
+  - 'web1.ash   [importer-ops, batch-ops-ash1]': 
+    - ssh cfoley@web1.ash.starfishsolutions.com 
+    - exit
+  - 'web2.ash   [importer-beta, batch-ea-ash1, batch-ea-ash2]': 
+    - ssh cfoley@web2.ash.starfishsolutions.com
+    - exit
+  - 'web3.ash   [batch-ops-ash2, batch-ops-ash3, batch-ops-ash4]': 
+    - ssh cfoley@web3.ash.starfishsolutions.com
+    - exit
+  - 'web4.ash': 
+    - ssh cfoley@web4.ash.starfishsolutions.com 
+    - exit
+  - 'web1.irl   [importer-beta, batch-ea1-irl]': 
+    - ssh cfoley@web1.irl.internal.studentsuccessinc.com
+    - exit
+  - 'web2.irl   [importer-ops, batch-ops1-irl]': 
+    - ssh cfoley@web2.irl.internal.studentsuccessinc.com
+    - exit
+  - 'db4.sjc    [sfadmin_ops, ops]': 
+    - ssh cfoley@db4.sjc.starfishsolutions.com
+    - exit
+  - 'db5.sjc    [sfadmin_beta, ea]': 
+    - ssh cfoley@db5.sjc.starfishsolutions.com
+    - exit
+  - 'db6.sjc    [ops2]': 
+    - ssh cfoley@db6.sjc.starfishsolutions.com
+    - exit
+  - 'db7.sjc    [ea2]': 
+    - ssh cfoley@db7.sjc.starfishsolutions.com
+    - exit
+  - 'db8.sjc    [ops3]': 
+    - ssh cfoley@db8.sjc.starfishsolutions.com
+    - exit
+  - 'db9.sjc    [ea3]': 
+    - ssh cfoley@db9.sjc.starfishsolutions.com
+    - exit
+  - 'db10.sjc   [ops4]': 
+    - ssh cfoley@db10.sjc.starfishsolutions.com
+    - exit
+  - 'db11.sjc   [ea4, ops5]': 
+    - ssh cfoley@db11.sjc.starfishsolutions.com
+    - exit
+  - 'db2.ash    [testing]': 
+    - ssh cfoley@db2.ash.starfishsolutions.com
+    - exit
+  - 'db3.ash    [sfadmin_ops_ash, ops_ash, ivytech]': 
+    - ssh cfoley@db3.ash.starfishsolutions.com
+    - exit
+  - 'db4.ash    [ops2_ash, vccs]': 
+    - ssh cfoley@db4.ash.starfishsolutions.com
+    - exit
+  - 'db5.ash    [sfadmin_ea_ash, ea_ash]': 
+    - ssh cfoley@db5.ash.starfishsolutions.com
+    - exit
+  - 'db6.ash    [ops3_ash]': 
+    - ssh cfoley@db6.ash.starfishsolutions.com
+    - exit
+  - 'db7.ash    [ea2_ash]': 
+    - ssh cfoley@db7.ash.starfishsolutions.com
+    - exit
+  - 'db8.ash    [ops4_ash]': 
+    - ssh cfoley@db8.ash.starfishsolutions.com
+    - exit
+  - 'ftp1.ash': 
+    - ssh cfoley@ftp1.ash.starfishsolutions.com
+    - exit
+  - 'nas.irl': 
+    - ssh cfoley@nas.irl.starfishsolutions.com
+    - exit
+  - 'nas.ore': 
+    - ssh cfoley@nas.ore.starfishsolutions.com
+    - exit
+
