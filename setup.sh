@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc screenrc tmux.conf tmuxinator ssh/config"    # list of files/folders to symlink in homedir
+files="bashrc vimrc screenrc tmux.conf tmuxinator"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -29,3 +29,6 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+#ssh doesn't like the config file being a symlink because it is too permissive
+[ -r "config" ] && cp -pf "config" ~/.ssh/config
