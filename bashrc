@@ -73,10 +73,11 @@ export PAGER=less
 export LESS="-iMSx4 -FX"
 export PROMPT_COMMAND=prompt_command
 export DISABLE_AUTO_TITLE=true
+export GOPATH=~/gocode
 
 [ "$(hostname)" == "host56.starfishsolutions.com" ] && export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home" 
 
-export PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin:${EC2_HOME}/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin:${EC2_HOME}/bin:${HOME}/gocode/bin"
 
 alias ls='ls -GFh'
 alias grep='grep --color=auto'
