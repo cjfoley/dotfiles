@@ -9,6 +9,6 @@ ControlPersist yes
 Host nat1.ore.starfishsolutions.com
     ProxyCommand  ssh -W %h:%p rightscale@bastion.ore.starfishsolutions.com
 
-Host 172.30.?.?
+Host 172.30.*.*
     ProxyCommand  ssh -W %h:%p rightscale@bastion.ore.starfishsolutions.com
 
