@@ -60,9 +60,9 @@ windows:
   - 'web4.ash': 
     - ssh cfoley@web4.ash.starfishsolutions.com 
   - 'web1.irl   [importer-beta, batch-ea1-irl]': 
-    - ssh cfoley@web1.irl.internal.studentsuccessinc.com
+    - ssh cfoley@web1.irl.starfishsolutions.com
   - 'web2.irl   [importer-ops, batch-ops1-irl]': 
-    - ssh cfoley@web2.irl.internal.studentsuccessinc.com
+    - ssh cfoley@web2.irl.starfishsolutions.com
   - 'db4.sjc    [sfadmin_ops, ops]': 
     - ssh cfoley@db4.sjc.starfishsolutions.com
   - 'db5.sjc    [sfadmin_beta, ea]': 
@@ -99,4 +99,11 @@ windows:
     - ssh cfoley@nas.irl.starfishsolutions.com
   - 'nas.ore': 
     - ssh cfoley@nas.ore.starfishsolutions.com
-
+  - 'web1-ea.ore':
+    - ssh rightscale@web1-ea.ore.starfishsolutions.com
+  - 'web2-ea.ore':
+    - ssh rightscale@web2-ea.ore.starfishsolutions.com
+  - 'db1.ore proxy':
+    - ssh -L 55555:db1.ore.starfishsolutions.com:5432 rightscale@bastion.ore.starfishsolutions.com
+  - 'db1.ore psql':
+    - psql -h localhost -p 55555 -U starfish
