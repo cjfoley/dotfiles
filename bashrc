@@ -76,7 +76,13 @@ export DISABLE_AUTO_TITLE=true
 
 [ "$(hostname)" == "host56.starfishsolutions.com" ] && export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home" 
 
-export PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin:${EC2_HOME}/bin"
+PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
+PATH="${HOME}/bin:${PATH}"
+PATH="${EC2_HOME}/bin:${PATH}"
+PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+export PATH=${PATH}
+
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 alias ls='ls -GFh'
 alias grep='grep --color=auto'
