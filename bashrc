@@ -37,13 +37,13 @@ function prompt_command () {
     local EXIT="$?"             # This needs to be first
 
     #first line
-    PS1="\n\\[\e[00;37m\]\w\[\e[0m\]\n"
+    PS1="\n\w\n"
 
     #add a star if inside screen
     [ -n "$STY" ] && PS1+="\[\e[${S1};${S2}m\]★  \[\e[0m\]"
 
     #common prompt
-    PS1+="\[\e[${U1};${U2}m\]\u\[\e[0m\]\[\e[00;37m\]@\[\e[0m\]\[\e[${H1};${H2}m\]\h\[\e[0m\]"
+    PS1+="\[\e[${U1};${U2}m\]\u\[\e[0m\]@\[\e[${H1};${H2}m\]\h\[\e[0m\]"
 
     #green/red chevron depending on last exit code
     if [ $EXIT != 0 ]; then
@@ -92,5 +92,7 @@ alias flushdns='sudo killall -HUP mDNSResponder'
 alias worklog='vim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
 alias worklog_search='find $HOME/Dropbox/Work/worklog -type f -name *.txt | percol'
 alias mux='tmuxinator'
+
+alias db1.ore='ssh -f -N db1.ore.starfishsolutions.com && psql -h localhost -p 5433 -U starfish -d ea_ore'
 
 [ -r ~/bin/tmuxinator.bash ] && source ~/bin/tmuxinator.bash
