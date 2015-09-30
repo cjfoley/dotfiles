@@ -31,4 +31,4 @@ for file in $files; do
 done
 
 #ssh doesn't like the config file being a symlink because it is too permissive
-[ -r "config" ] && cp -pf "config" ~/.ssh/config
+#[ -r "config" ] && cp -pf "config" ~/.ssh/config
