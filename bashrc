@@ -52,9 +52,6 @@ function prompt_command () {
         PS1+="\[\e[0;32m\] ❯ \[\e[0m\]"
     fi
 
-    #experimental feature to also insert newline *after* the prompt
-    PS1+="\033[s\n\033[u\033[1A"
-
 }
 
 # put timestamps in bash history
