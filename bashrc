@@ -40,7 +40,7 @@ function prompt_command () {
     PS1="\n\w\n"
 
     #add a star if inside screen
-    [ -n "$STY" ] && PS1+="\[\e[${S1};${S2}m\]★  \[\e[0m\]"
+    [ "$TERM" == "screen" ] && PS1+="\[\e[${S1};${S2}m\]★  \[\e[0m\]"
 
     #common prompt
     PS1+="\[\e[${U1};${U2}m\]\u\[\e[0m\]@\[\e[${H1};${H2}m\]\h\[\e[0m\]"
@@ -75,8 +75,6 @@ export PROMPT_COMMAND=prompt_command
 export DISABLE_AUTO_TITLE=true
 export GOPATH=~/gocode
 
-[ "$(hostname)" == "host56.starfishsolutions.com" ] && export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home" 
-
 PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
 PATH="${HOME}/bin:${PATH}"
 PATH="${EC2_HOME}/bin:${PATH}"
@@ -91,8 +89,8 @@ alias grep='grep --color=auto'
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias worklog='vim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
 alias worklog_search='find $HOME/Dropbox/Work/worklog -type f -name *.txt | percol'
-alias mux='tmuxinator'
 
-alias db1.ore='ssh -f -N db1.ore.starfishsolutions.com && psql -h localhost -p 5433 -U starfish -d ea_ore'
+#work ssh organization
+alias ore_web1_ea='echo hi'
+alias ore_db1='ssh -f -N db1.ore.starfishsolutions.com && psql -h localhost -p 5433 -U starfish -d ea_ore'
 
-[ -r ~/bin/tmuxinator.bash ] && source ~/bin/tmuxinator.bash
