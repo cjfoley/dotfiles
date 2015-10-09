@@ -29,6 +29,3 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
-
-#ssh doesn't like the config file being a symlink because it is too permissive
-#[ -r "config" ] && cp -pf "config" ~/.ssh/config
