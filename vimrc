@@ -2,6 +2,7 @@ set nocompatible
 filetype plugin indent on
 syntax enable
 set hidden
+set wildmenu
 
 "python
 set tabstop=4   
