@@ -1,4 +1,4 @@
 defscrollback 50000
 termcapinfo xterm-256color|xterm-color|xterm|xterms|xs|rxvt ti@:te@
 
-hardstatus alwayslastline "%{= dr} %=  %f %t %= %{ w} %C:%s"
+hardstatus alwayslastline "%{= dr} %=  %f %t %= %{ d} %C:%s"
