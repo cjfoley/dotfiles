@@ -109,8 +109,8 @@ alias ore_vvc_test='renametab vvc-test.db && ssh -f -N vvc-test.db && psql -h lo
 alias ore_santarosa_test='renametab santarosa-test.db && ssh -f -N santarosa-test.db && psql -h localhost -p 10008 -U starfish -d santarosa_test'
 alias ore_sbccd_test='renametab sbccd-test.db && ssh -f -N sbccd-test.db && psql -h localhost -p 10009 -U starfish -d sbccd_test'
 alias ore_ea_ash='renametab ea-ash.db && ssh -f -N ea-ash.db && psql -h localhost -p 10010 -U starfish -d ea_ash'
-alias ore_ops='renametab db2.ore && ssh -f -N db2.ore && psql -h localhost -p 10011 -U starfish -d ea_ore'
-alias ore_sfadmin_ops='renametab sfadmin-db2.ore && ssh -f -N sfadmin-db2.ore && psql -h localhost -p 10012 -U starfish -d sfadmin_ea_ore'
+alias ore_ops='renametab db2.ore && ssh -f -N db2.ore && psql -h localhost -p 10011 -U starfish -d ops_ore'
+alias ore_sfadmin_ops='renametab sfadmin-db2.ore && ssh -f -N sfadmin-db2.ore && psql -h localhost -p 10012 -U starfish -d sfadmin_ops_ore'
 
 #SJC
 alias sjc_web3='renametab web3.sjc && ssh web3.sjc.starfishsolutions.com'
