@@ -88,6 +88,7 @@ export GOPATH=~/gocode
 
 PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
 PATH="${HOME}/bin:${PATH}"
+PATH="${HOME}/Dropbox/bin:${PATH}"
 PATH="${HOME}/gocode/bin:${PATH}"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 export PATH=${PATH}
