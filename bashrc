@@ -66,6 +66,12 @@ function rename() {
     fi
 }
 
+function port() {
+    local PORT=$1
+
+    lsof -i:$PORT | grep LISTEN
+}
+
 # put timestamps in bash history
 export HISTTIMEFORMAT='%F %T '
 # don't put duplicate commands into the history
