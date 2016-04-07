@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc screenrc tmux.conf psqlrc ansible.cfg"    # list of files/folders to symlink in homedir
+files="bashrc vimrc screenrc tmux.conf psqlrc ansible.cfg muttrc"    # list of files/folders to symlink in homedir
 
 ##########
 
