@@ -168,3 +168,4 @@ alias stage_rc_db='rename stage-rc db && ssh -f -N stage-rc.db && psql -h localh
 alias stage_ea_db='rename stage-ea db && ssh -f -N stage-ea.db && psql -h localhost -p 9002 -U starfish -d stage_ea'
 alias stage_ops_db='rename stage-ops db && ssh -f -N stage-ops.db && psql -h localhost -p 9003 -U starfish -d stage_ops'
 
+alias kill_av='kill -9 $(ps aux | grep "ESET NOD32 Antivirus.app" | grep -v grep | awk "{ print $2 }")'
