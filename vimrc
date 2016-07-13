@@ -33,3 +33,11 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "when crontab files are recognized, edit in place
 autocmd filetype crontab setlocal nobackup nowritebackup
+
+let X = getline(1)
+    let y = match(X, "#!/bin/bash" )
+    if (y != -1)
+        so ~/Dropbox/Work/bash.vim
+    endif
+unlet X
+unlet y
