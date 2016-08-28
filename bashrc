@@ -159,7 +159,7 @@ alias irl_db1='rename db1.irl && ssh -f -N db1.irl && psql -h localhost -p 12000
 alias irl_db2='rename db2.irl && ssh -f -N db2.irl && psql -h localhost -p 12001 -U starfish -d ops_irl'
 
 #staging
-alias stage='rename stage && ssh stage.starfishsolutions.com'
+alias stage='rename stage && ssh stage.external.starfishsolutions.com'
 alias stage_rc='rename stage-rc && ssh stage-rc.starfishsolutions.com'
 alias stage_ea='rename stage-ea && ssh stage-ea.starfishsolutions.com'
 alias stage_ops='rename stage-ops && ssh stage-ops.starfishsolutions.com'
