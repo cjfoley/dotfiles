@@ -98,6 +98,7 @@ PATH="${HOME}/Dropbox/bin:${PATH}"
 PATH="${HOME}/gocode/bin:${PATH}"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 PATH="/opt/cisco/anyconnect/bin:${PATH}"
+PATH="/opt/X11/bin:${PATH}"
 export PATH=${PATH}
 
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
