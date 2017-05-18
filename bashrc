@@ -107,6 +107,8 @@ alias ls='ls -GFh'
 alias grep='grep --color=auto'
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias worklog='vim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
+alias feckout='git checkout $(git branch | percol | grep -Eo 'ME.*')'
+alias fim='FILE=$(find . -type f | percol) && rename "${FILE}" && vim "${FILE}"'
 
 #python3 stuff flips out without these set
 export LC_ALL=en_US.UTF-8
