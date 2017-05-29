@@ -1,31 +1,41 @@
 #!/bin/bash
-############################
-# .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
-############################
 
-########## Variables
+DIR=~/dotfiles
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc screenrc tmux.conf psqlrc ansible.cfg muttrc"    # list of files/folders to symlink in homedir
+FILES="
+    .bashrc 
+    .vimrc 
+    .screenrc 
+    .tmux.conf 
+    .psqlrc 
+    .ansible.cfg 
+    .muttrc 
+    .config/nvim/init.vim
+"
 
-##########
+echo "=> ${DIR}"
+cd ${DIR}
 
-# create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
-mkdir -p $olddir
-echo "done"
+for FILE in $FILES; do
+    FILE="${HOME}/${FILE}"
 
-# change to the dotfiles directory
-echo -n "Changing to the $dir directory ..."
-cd $dir
-echo "done"
+    if [ ! -r "${FILE}" ]; then
+        tput setaf 1
+        echo "${FILE} is unreadable or doesn't exist..."
+        tput sgr0
+        continue
+    fi
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    if [ -L "${FILE}" ]; then
+        tput setaf 2
+        echo "${FILE} is a symlink..."
+        tput sgr0
+        continue
+    fi
+
+    echo "moving ${FILE}..."
+    mkdir -p $(dirname "${FILE}")
+    mv "${FILE}" "${DIR}"
+    echo "symlinking ${FILE}..."
+    ln -s "${DIR}/$(basename ${FILE})" "${FILE}"
 done
