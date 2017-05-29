@@ -28,9 +28,6 @@ set nowrap
 set nobackup 
 set noswapfile
 
-"ctrl-p
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 "when crontab files are recognized, edit in place
 autocmd filetype crontab setlocal nobackup nowritebackup
 
