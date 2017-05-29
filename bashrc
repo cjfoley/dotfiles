@@ -103,13 +103,25 @@ export PATH=${PATH}
 
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
+#fzf
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+# --files: List files that would be searched but do not search
+# --no-ignore: Do not respect .gitignore, etc...
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 alias ls='ls -GFh'
 alias grep='grep --color=auto'
 alias flushdns='sudo killall -HUP mDNSResponder'
-alias worklog='vim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
-alias feckout='git checkout $(git branch | percol | grep -Eo 'ME.*')'
-alias fim='FILE=$(find . -type f | percol) && rename "${FILE}" && vim "${FILE}"'
+alias worklog='nvim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
+alias pistory='eval $(history | cut -c 28- | percol)'
+alias peckout='git checkout $(git branch | percol | grep -Eo 'ME.*')'
+alias pim='nvim $(find ~/Workspace -type f | percol)'
 
 #python3 stuff flips out without these set
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
