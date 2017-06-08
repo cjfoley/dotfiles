@@ -35,6 +35,7 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 imap jj <Esc>
 nmap <C-t> :TagbarToggle<Esc>
 nmap <C-f> :Files<Esc>
+nmap ∫∫ :b#<Return>
 
 let X = getline(1)
     let y = match(X, "#!/bin/bash" )
@@ -48,25 +49,28 @@ unlet y
 call plug#begin()
 Plug 'majutsushi/tagbar'
 Plug 'bling/vim-airline'
+Plug 'scrooloose/syntastic'
+Plug 'kien/rainbow_parentheses.vim'
 " fuzzy finding
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" java autocomplete
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 " airline
 " turns on the fancy arrow separators
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
+let g:airline_section_c = airline#section#create(['%F'])
+let g:airline_section_x = airline#section#create(['%r'])
+let g:airline_section_y = airline#section#create(['%{getcwd()}'])
+let g:airline_section_z = airline#section#create(['%n'])
 
 " Find command using rg and fzf
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
-" javacomplete2
-" also had to manually compile included javavi lib with mvn
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+let g:syntastic_javascript_checkers = ['jshint']
 
-" deoplete
-" required pip3 install neovim
-let g:deoplete#enable_at_startup = 1
+" always on rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

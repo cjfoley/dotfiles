@@ -40,7 +40,7 @@ function prompt_command () {
     PS1="\n\w\n"
 
     #add a star if inside screen
-    [ "$TERM" == "screen" ] && PS1+="\[\e[${S1};${S2}m\]★  \[\e[0m\]"
+    [ "$TERM" == "screen" ] || [ "$TERM" == "screen-256color" ] && PS1+="\[\e[${S1};${S2}m\]★  \[\e[0m\]"
 
     #common prompt
     PS1+="\[\e[${U1};${U2}m\]\u\[\e[0m\]@\[\e[${H1};${H2}m\]\h\[\e[0m\]"
@@ -61,7 +61,7 @@ function rename() {
         tmux rename-window "${NAME}"
     fi
 
-    if [ "$TERM" == "screen" ]; then
+    if [ "$TERM" == "screen" ] || [ "$TERM" == "screen-256color" ]; then
         screen -X title "${NAME}"
     fi
 }
@@ -116,9 +116,10 @@ alias ls='ls -GFh'
 alias grep='grep --color=auto'
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias worklog='nvim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
-alias pistory='eval $(history | cut -c 28- | percol)'
-alias peckout='git checkout $(git branch | percol | grep -Eo 'ME.*')'
-alias pim='nvim $(find ~/Workspace -type f | percol)'
+alias p.history='eval $(history | cut -c 28- | percol)'
+alias p.checkout='git checkout $(git branch | percol | grep -Eo 'ME.*')'
+alias p.push='git push -u origin $(git branch | percol | grep -Eo 'ME.*')'
+alias p.nvim='nvim $(find ~/Workspace -type f | percol)'
 
 #python3 stuff flips out without these set
 export LC_ALL=en_US.UTF-8
