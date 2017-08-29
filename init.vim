@@ -4,13 +4,15 @@ syntax enable
 set hidden
 set wildmenu
 
-"python
+"god damn tabs
 set tabstop=4   
 set shiftwidth=4
 set expandtab
 set softtabstop=4
 set autoindent
 set copyindent
+set list
+set listchars=tab:>-
 
 "search
 set showmatch
@@ -51,6 +53,8 @@ Plug 'majutsushi/tagbar'
 Plug 'bling/vim-airline'
 Plug 'scrooloose/syntastic'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'ntpeters/vim-better-whitespace'
 " fuzzy finding
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'

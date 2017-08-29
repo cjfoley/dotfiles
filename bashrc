@@ -114,12 +114,15 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 alias ls='ls -GFh'
 alias grep='grep --color=auto'
+alias aria2c='aria2c -x 16'
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias worklog='nvim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
+alias random_file='ls -R | sort -R | tail -1'
 alias p.history='eval $(history | cut -c 28- | percol)'
 alias p.checkout='git checkout $(git branch | percol | grep -Eo 'ME.*')'
 alias p.push='git push -u origin $(git branch | percol | grep -Eo 'ME.*')'
 alias p.nvim='nvim $(find ~/Workspace -type f | percol)'
+alias git.addnw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
 
 #python3 stuff flips out without these set
 export LC_ALL=en_US.UTF-8
