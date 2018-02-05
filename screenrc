@@ -2,4 +2,4 @@ defscrollback 50000
 term screen-256color
 termcapinfo xterm* ti@:te@ #enables mouse scroll
 hardstatus alwayslastline
-hardstatus string "%{= dg} %=                      %f %t%=%{= dg}%l%{ d} %C:%s"
+hardstatus string "%{= dr} %=                      %f %t%=%{= dr}%l%{ d} %C:%s"
