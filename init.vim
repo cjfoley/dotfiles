@@ -71,7 +71,7 @@ let g:airline_section_y = airline#section#create(['%{getcwd()}'])
 let g:airline_section_z = airline#section#create(['%n'])
 
 " Find command using rg and fzf
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!*target/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 let g:syntastic_javascript_checkers = ['jshint']
 
