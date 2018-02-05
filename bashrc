@@ -123,6 +123,9 @@ alias p.checkout='git checkout $(git branch | percol | grep -Eo 'ME.*')'
 alias p.push='git push -u origin $(git branch | percol | grep -Eo 'ME.*')'
 alias p.nvim='nvim $(find ~/Workspace -type f | percol)'
 alias git.addnw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+alias webm2mp4='for FILE in *.webm; do ffmpeg -i "${FILE}" "$(tr -d '.webm' <<< ${FILE}).mp4" && rm -f "${FILE}"; done'
+alias pg-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pg-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 
 #python3 stuff flips out without these set
 export LC_ALL=en_US.UTF-8
