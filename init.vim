@@ -51,6 +51,7 @@ unlet y
 call plug#begin()
 Plug 'majutsushi/tagbar'
 Plug 'bling/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-fugitive'
@@ -61,6 +62,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " airline
+"let g:airline_theme='tomorrow'
 " turns on the fancy arrow separators
 let g:airline_powerline_fonts = 0
 let g:airline_section_c = airline#section#create(['%F'])
