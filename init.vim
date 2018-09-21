@@ -25,9 +25,9 @@ set number
 set cursorline
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 set nowrap
-    
+
 "vim stahp
-set nobackup 
+set nobackup
 set noswapfile
 
 "when crontab files are recognized, edit in place
@@ -51,6 +51,7 @@ unlet y
 call plug#begin()
 Plug 'majutsushi/tagbar'
 Plug 'bling/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-fugitive'
@@ -61,6 +62,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " airline
+"let g:airline_theme='tomorrow'
 " turns on the fancy arrow separators
 let g:airline_powerline_fonts = 0
 let g:airline_section_c = airline#section#create(['%F'])
@@ -69,7 +71,7 @@ let g:airline_section_y = airline#section#create(['%{getcwd()}'])
 let g:airline_section_z = airline#section#create(['%n'])
 
 " Find command using rg and fzf
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!*target/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 let g:syntastic_javascript_checkers = ['jshint']
 
