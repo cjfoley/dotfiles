@@ -1,33 +1,32 @@
-set my_server       =   "mail.messagingengine.com"
-set my_smtp_server  =   "mail.messagingengine.com"
-set my_user         =   "cjfoley@fastmail.com"
-#set my_pass         =  ""
+# stolen from https://gist.github.com/miguelmota/9456162
 
+# Folder hooks
+folder-hook 'account.com.fastmail' 'source ~/.mutt/account.com.fastmail'
+folder-hook 'account.com.marginedge' 'source ~/.mutt/account.com.marginedge'
 
-set record          =   "imaps://${my_server}/INBOX.Sent Items"
-set postponed       =   "imaps://${my_server}/INBOX.Drafts"
+# Default account
+source ~/.mutt/account.com.fastmail
 
-set from            =   "me@cjfoley.com"
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.com.fastmail<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.com.marginedge<enter><change-folder>!<enter>'
 
-# Account - SMTP
+# Fetch mail shortcut
+bind index G imap-fetch-mail
 
-set smtp_url        = "smtp://${my_user}:${my_pass}@${my_smtp_server}:587"
-set smtp_pass       = "${my_pass}"
-set imap_user       = "${my_user}"
-#if you don't set imap_pass mutt will ask for the password
-#set imap_pass       = "${my_pass}"
-set ssl_force_tls   = yes
-set ssl_starttls    = no
-
-#
-# Default inbox
-#
-set spoolfile       = "imaps://${my_server}/INBOX"
-
-#
-# Default location of mailboxes
-#
-set folder          = "imaps://${my_server}/INBOX"
+# each account file has something like this in it:
+#set imap_user = "foo@gmail.com"
+#set imap_pass = "<PASSWORD>"
+#set smtp_url = "smtp://foo@smtp.gmail.com:587/"
+#set smtp_pass = "<PASSWORD>"
+#set from = "foo@gmail.com"
+#set realname = "Foo"
+#set folder = "imaps://imap.gmail.com:993"
+#set spoolfile = "+INBOX"
+#set postponed = "+[Gmail]/Drafts"
+#set header_cache = ~/.mutt/com.gmail.foo/cache/headers
+#set message_cachedir = ~/.mutt/com.gmail.foo/cache/bodies
+#set certificate_file = ~/.mutt/com.gmail.foo/certificates
 
 # Colours for items in the index
 color index brightcyan default ~N
@@ -73,7 +72,6 @@ color header yellow default "^X-Spam-Status:"
 color header yellow default "^X-SpamProbe:"
 color header red default "^X-SpamProbe: SPAM"
 
-
 # Coloring quoted text - coloring the first 7 levels:
 color quoted cyan default
 color quoted1 yellow default
@@ -84,11 +82,10 @@ color quoted5 yellow default
 color quoted6 red default
 color quoted7 green default
 
-
 # Default color definitions
 color hdrdefault cyan default
 color signature brightmagenta default
-color indicator black cyan 
+color indicator black cyan
 color attachment default green
 color error red default
 color message white default
@@ -104,3 +101,8 @@ color markers brightcyan default
 mono bold bold
 mono underline underline
 mono indicator reverse
+
+# Sanely handle multi-part messages (prefer text part, but yield to
+# mailcap-configured rendering for html-only)
+alternative_order text/plain text/html
+auto_view text/html

@@ -8,11 +8,11 @@ H2=${COLOR_CODES[$RANDOM % ${#COLOR_CODES[@]} ]}
 S1=${COLOR_TYPES[$RANDOM % ${#COLOR_CODES[@]} ]}
 S2=${COLOR_CODES[$RANDOM % ${#COLOR_CODES[@]} ]}
 
-function gibberish () {
+gibberish() {
     base64 /dev/urandom | head -c $@
 }
 
-function pretty () {
+pretty() {
     local RESET='\e[0m'
 
     while read -r LINE; do
@@ -29,11 +29,11 @@ function pretty () {
     done <<< "$(cat -)" 
 }
 
-function renametab () {
+renametab() {
     echo -ne "\033]0;"$@"\007"
 }
 
-function prompt_command () {
+prompt_command() {
     local EXIT="$?"             # This needs to be first
 
     #first line
@@ -54,7 +54,7 @@ function prompt_command () {
 
 }
 
-function rename() {
+rename() {
     local NAME=$1
 
     if [ -n "${TMUX}" ]; then
@@ -66,10 +66,8 @@ function rename() {
     fi
 }
 
-function port() {
-    local PORT=$1
-
-    lsof -i:$PORT | grep LISTEN
+port() {
+    local PORT=$1; lsof -i:$PORT | grep LISTEN
 }
 
 # put timestamps in bash history
@@ -87,7 +85,7 @@ export AUTOSSH_POLL=30
 export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
 export CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=1024m"
 export PAGER=less
-export LESS="-iMSx4 -FX"
+export LESS="-iMSx4 -FXR"
 export PROMPT_COMMAND=prompt_command
 export DISABLE_AUTO_TITLE=true
 export GOPATH=~/gocode
@@ -99,17 +97,13 @@ PATH="${HOME}/gocode/bin:${PATH}"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 PATH="/opt/cisco/anyconnect/bin:${PATH}"
 PATH="/opt/X11/bin:${PATH}"
+PATH="${HOME}/.cargo/bin:${PATH}"
+PATH="${HOME}/workspace/local-scripts:${PATH}"
 export PATH=${PATH}
 
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-#fzf
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
-# --files: List files that would be searched but do not search
-# --no-ignore: Do not respect .gitignore, etc...
-# --hidden: Search hidden files and folders
-# --follow: Follow symlinks
-# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 alias ls='ls -GFh'
@@ -123,12 +117,14 @@ alias p.checkout='git checkout $(git branch | percol | grep -Eo 'ME.*')'
 alias p.push='git push -u origin $(git branch | percol | grep -Eo 'ME.*')'
 alias p.nvim='nvim $(find ~/Workspace -type f | percol)'
 alias git.addnw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
-alias webm2mp4='for FILE in *.webm; do ffmpeg -i "${FILE}" "$(tr -d '.webm' <<< ${FILE}).mp4" && rm -f "${FILE}"; done'
+alias webm2mp4='for FILE in *.webm; do ffmpeg -i "${FILE}" "$(sed "s/.webm//" <<< ${FILE}).mp4" && rm -f "${FILE}"; done'
 alias pg-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias pg-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 #python3 stuff flips out without these set
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
