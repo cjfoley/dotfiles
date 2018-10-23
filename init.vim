@@ -25,9 +25,9 @@ set number
 set cursorline
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 set nowrap
-    
+
 "vim stahp
-set nobackup 
+set nobackup
 set noswapfile
 
 "when crontab files are recognized, edit in place

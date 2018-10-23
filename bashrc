@@ -70,6 +70,34 @@ port() {
     local PORT=$1; lsof -i:$PORT | grep LISTEN
 }
 
+worklog() {
+    local yesterday
+    local today
+
+    yesterday=$(find $HOME/Dropbox/work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)
+    today="$HOME/Dropbox/work/worklog/$(date +"%Y%m%d").txt"
+
+    echo "Opening worklog..."
+
+    if [[ ! -e "${today}" ]]; then
+        echo "##################################" >> "${today}"
+        echo "#        MORNING CHECKLIST       #" >> "${today}"
+        echo "##################################" >> "${today}"
+        echo "# Reply to mentions: " >> "${today}"
+        echo "#---------------------------------" >> "${today}"
+        echo "# Inspect alerts: " >> "${today}"
+        echo "#---------------------------------" >> "${today}"
+        echo "# Look for JIRA changes: " >> "${today}"
+        echo "#---------------------------------" >> "${today}"
+        echo "# Check Jenkins health: " >> "${today}"
+        echo "#---------------------------------" >> "${today}"
+        echo "# Process pull requests: " >> "${today}"
+        echo "##################################" >> "${today}"
+    fi
+
+    nvim "+set wrap" -O "${today}" "${yesterday}"
+}
+
 # put timestamps in bash history
 export HISTTIMEFORMAT='%F %T '
 # don't put duplicate commands into the history
@@ -90,12 +118,16 @@ export PROMPT_COMMAND=prompt_command
 export DISABLE_AUTO_TITLE=true
 export GOPATH=~/gocode
 
+#i3
+export TERMINAL="/bin/alacritty"
+
 PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
 PATH="${HOME}/bin:${PATH}"
 PATH="${HOME}/Dropbox/bin:${PATH}"
 PATH="${HOME}/gocode/bin:${PATH}"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 PATH="/opt/cisco/anyconnect/bin:${PATH}"
+PATH="${HOME}/workspace/local-scripts:${PATH}"
 PATH="/opt/X11/bin:${PATH}"
 PATH="${HOME}/.cargo/bin:${PATH}"
 PATH="${HOME}/workspace/local-scripts:${PATH}"
@@ -110,7 +142,6 @@ alias ls='ls -GFh'
 alias grep='grep --color=auto'
 alias aria2c='aria2c -x 16'
 alias flushdns='sudo killall -HUP mDNSResponder'
-alias worklog='nvim "+set wrap" -O "$HOME/Dropbox/Work/worklog/$(date +"%Y%m%d").txt" $(find $HOME/Dropbox/Work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)'
 alias random_file='ls -R | sort -R | tail -1'
 alias p.history='eval $(history | cut -c 28- | percol)'
 alias p.checkout='git checkout $(git branch | percol | grep -Eo 'ME.*')'
@@ -118,6 +149,7 @@ alias p.push='git push -u origin $(git branch | percol | grep -Eo 'ME.*')'
 alias p.nvim='nvim $(find ~/Workspace -type f | percol)'
 alias git.addnw='git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
 alias webm2mp4='for FILE in *.webm; do ffmpeg -i "${FILE}" "$(sed "s/.webm//" <<< ${FILE}).mp4" && rm -f "${FILE}"; done'
+alias lock='i3lock -c $(openssl rand -hex 3)'
 alias pg-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias pg-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
