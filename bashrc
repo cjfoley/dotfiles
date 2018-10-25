@@ -80,8 +80,8 @@ worklog() {
     local yesterday
     local today
 
-    yesterday=$(find ${DROPBOX}/work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)
-    today="${DROPBOX}/work/worklog/$(date +"%Y%m%d").txt"
+    yesterday=$(find "${DROPBOX}/work/worklog" -type f -name *.txt ! -name "$(date +'%Y%m%d').txt" | sort | tail -1)
+    today="${DROPBOX}/work/worklog/$(date +'%Y%m%d').txt"
 
     echo "Opening worklog..."
 
