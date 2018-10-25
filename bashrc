@@ -8,6 +8,12 @@ H2=${COLOR_CODES[$RANDOM % ${#COLOR_CODES[@]} ]}
 S1=${COLOR_TYPES[$RANDOM % ${#COLOR_CODES[@]} ]}
 S2=${COLOR_CODES[$RANDOM % ${#COLOR_CODES[@]} ]}
 
+if [[ -e /Volumes/Stash/Dropbox ]]; then
+    DROPBOX="/Volumes/Stash/Dropbox"
+else
+    DROPBOX="${HOME}/Dropbox"
+fi
+
 gibberish() {
     base64 /dev/urandom | head -c $@
 }
@@ -74,8 +80,8 @@ worklog() {
     local yesterday
     local today
 
-    yesterday=$(find $HOME/Dropbox/work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)
-    today="$HOME/Dropbox/work/worklog/$(date +"%Y%m%d").txt"
+    yesterday=$(find ${DROPBOX}/work/worklog -type f -name *.txt ! -name "$(date +"%Y%m%d").txt" | sort | tail -1)
+    today="${DROPBOX}/work/worklog/$(date +"%Y%m%d").txt"
 
     echo "Opening worklog..."
 
@@ -123,7 +129,7 @@ export TERMINAL="/bin/alacritty"
 
 PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
 PATH="${HOME}/bin:${PATH}"
-PATH="${HOME}/Dropbox/bin:${PATH}"
+PATH="${DROPBOX}/bin:${PATH}"
 PATH="${HOME}/gocode/bin:${PATH}"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 PATH="/opt/cisco/anyconnect/bin:${PATH}"
