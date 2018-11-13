@@ -8,12 +8,6 @@ H2=${COLOR_CODES[$RANDOM % ${#COLOR_CODES[@]} ]}
 S1=${COLOR_TYPES[$RANDOM % ${#COLOR_CODES[@]} ]}
 S2=${COLOR_CODES[$RANDOM % ${#COLOR_CODES[@]} ]}
 
-if [[ -e /Volumes/Stash/Dropbox ]]; then
-    DROPBOX="/Volumes/Stash/Dropbox"
-else
-    DROPBOX="${HOME}/Dropbox"
-fi
-
 gibberish() {
     base64 /dev/urandom | head -c $@
 }
@@ -45,9 +39,6 @@ prompt_command() {
     #first line
     PS1="\n\w\n"
 
-    #add a star if inside screen
-    [ "$TERM" == "screen" ] || [ "$TERM" == "screen-256color" ] && PS1+="\[\e[${S1};${S2}m\]★  \[\e[0m\]"
-
     #common prompt
     PS1+="\[\e[${U1};${U2}m\]\u\[\e[0m\]@\[\e[${H1};${H2}m\]\h\[\e[0m\]"
 
@@ -65,9 +56,7 @@ rename() {
 
     if [ -n "${TMUX}" ]; then
         tmux rename-window "${NAME}"
-    fi
-
-    if [ "$TERM" == "screen" ] || [ "$TERM" == "screen-256color" ]; then
+    else
         screen -X title "${NAME}"
     fi
 }
@@ -80,8 +69,8 @@ worklog() {
     local yesterday
     local today
 
-    yesterday=$(find "${DROPBOX}/work/worklog" -type f -name *.txt ! -name "$(date +'%Y%m%d').txt" | sort | tail -1)
-    today="${DROPBOX}/work/worklog/$(date +'%Y%m%d').txt"
+    yesterday=$(find ~/cj_worklog -type f -name *.txt ! -name "$(date +'%Y%m%d').txt" | sort | tail -1)
+    today=~/cj_worklog/$(date +'%Y%m%d').txt
 
     echo "Opening worklog..."
 
@@ -112,12 +101,12 @@ export HISTCONTROL=ignoredups
 export HISTCONTROL=ignoreboth
 export HISTIGNORE='pwd:ls:history:'
 export HISTSIZE=4096
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export AUTOSSH_POLL=30
 
-export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m"
-export CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=1024m"
+export MAVEN_OPTS="-Xms512m -Xmx1024m"
+export CATALINA_OPTS="-Xms512m -Xmx1024m"
 export PAGER=less
 export LESS="-iMSx4 -FXR"
 export PROMPT_COMMAND=prompt_command
@@ -125,18 +114,19 @@ export DISABLE_AUTO_TITLE=true
 export GOPATH=~/gocode
 
 #i3
-export TERMINAL="/bin/alacritty"
+export TERMINAL="qterminal"
+
+# tput acts weird unless TERM holds something terminfo understands
+export TERM="xterm"
 
 PATH="/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
-PATH="${HOME}/bin:${PATH}"
-PATH="${DROPBOX}/bin:${PATH}"
+PATH="${HOME}/cj_bin:${PATH}"
 PATH="${HOME}/gocode/bin:${PATH}"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-PATH="/opt/cisco/anyconnect/bin:${PATH}"
 PATH="${HOME}/workspace/local-scripts:${PATH}"
 PATH="/opt/X11/bin:${PATH}"
+PATH="/usr/X11R6/bin:${PATH}"
 PATH="${HOME}/.cargo/bin:${PATH}"
-PATH="${HOME}/workspace/local-scripts:${PATH}"
 export PATH=${PATH}
 
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
@@ -144,8 +134,6 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
-alias ls='ls -GFh'
-alias grep='grep --color=auto'
 alias aria2c='aria2c -x 16'
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias random_file='ls -R | sort -R | tail -1'

@@ -35,7 +35,7 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 
 "keymappings
 imap jj <Esc>
-nmap <C-t> :TagbarToggle<Esc>
+nmap <C-t> :TagbarToggle<Return><C-w><C-w>
 nmap <C-f> :Files<Esc>
 nmap ∫∫ :b#<Return>
 
@@ -80,3 +80,5 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+let g:tagbar_ctags_bin = '/usr/local/bin/ectags'
